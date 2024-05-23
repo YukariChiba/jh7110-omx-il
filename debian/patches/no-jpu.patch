@@ -1,0 +1,57 @@
+diff --git a/Makefile b/Makefile
+index 150c4d5..296fa91 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,9 +27,6 @@ INCLUDES += -I$(STAGING_DIR)/usr/include/wave420l/vpuapi/
+ INCLUDES += -I$(STAGING_DIR)/usr/include/wave420l/sample/helper/
+ #INCLUDES += -I$(STAGING_DIR)/usr/include/wave420l/sample/helper/misc/
+ 
+-#mjpeg
+-INCLUDES += -I./component/image/common
+-
+ CFLAGS  += -g -I. $(INCLUDES) $(DEFINES) $(PLATFORM_FLAGS)
+ CFLAGS  += -fpic
+ ARFLAGS += cru
+@@ -49,12 +46,9 @@ SOURCES_COMMON += SF_OMX_Wave420L_encoder.c
+ SOURCES_COMMON += sf_queue.c
+ SOURCES_COMMON += sf_thread.c
+ SOURCES_COMMON += sf_semaphore.c
+-#mjpeg
+-SOURCES_COMMON += SF_OMX_mjpeg_common.c SF_OMX_Mjpeg_decoder.c
+ #test
+ SOURCES_DEC_TEST = dec_test.c
+ SOURCES_ENC_TEST = enc_test.c
+-MJPET_SOURCES_DEC_TEST = mjpeg_dec_test.c
+ 
+ VPATH  = component/video/wave5/common:
+ #VPATH += component/video/enc:
+@@ -64,10 +58,6 @@ VPATH += component/helper:
+ VPATH += core:
+ VPATH += tests:
+ 
+-#mjpeg
+-VPATH += component/image/common:
+-VPATH += component/image/dec:
+-
+ OBJECTNAMES_COMMON=$(patsubst %.c,%.o,$(SOURCES_COMMON))
+ OBJECTPATHS_COMMON=$(addprefix $(OBJDIR)/,$(notdir $(OBJECTNAMES_COMMON)))
+ OBJECTNAMES_DEC_TEST=$(patsubst %.c,%.o,$(SOURCES_DEC_TEST))
+@@ -83,7 +73,7 @@ all: omx-il
+ omx-il: CREATE_DIR $(OBJECTPATHS_COMMON)
+ 	$(CC) -g -fPIC -shared -o libsf-omx-il.so $(OBJECTPATHS_COMMON)
+ 
+-test: video-dec-test video-enc-test mjpeg-dec-test
++test: video-dec-test video-enc-test
+ 
+ video-dec-test: CREATE_DIR $(OBJECTPATHS_DEC_TEST)
+ 	$(CC) -o video_dec_test $(LDFLAGS) $(LDFLAGS_FFMPEG) -lsf-omx-il $(OBJECTPATHS_DEC_TEST) -L./
+@@ -91,9 +81,6 @@ video-dec-test: CREATE_DIR $(OBJECTPATHS_DEC_TEST)
+ video-enc-test: CREATE_DIR $(OBJECTPATHS_ENC_TEST)
+ 	$(CC) -o video_enc_test $(LDFLAGS) $(LDFLAGS_FFMPEG) -lsf-omx-il $(OBJECTPATHS_ENC_TEST) -L./
+ 
+-mjpeg-dec-test: CREATE_DIR $(OBJECTPATHS_MJPEG_DEC_TEST)
+-	$(CC) -g -o mjpeg_dec_test $(LDFLAGS) $(LDFLAGS_FFMPEG) -lsf-omx-il $(OBJECTPATHS_MJPEG_DEC_TEST) -L./
+-
+ clean:
+ 
+ CREATE_DIR:

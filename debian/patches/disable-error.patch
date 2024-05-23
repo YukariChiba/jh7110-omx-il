@@ -1,0 +1,10 @@
+diff --git a/Makefile b/Makefile
+index 150c4d5..063f7dc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -100,4 +100,4 @@ CREATE_DIR:
+ 	-mkdir -p $(OBJDIR)
+ 
+ obj/%.o: %.c $(MAKEFILE)
+-	$(CC) $(CFLAGS) -Wall -Werror -c $< -o $@ -MD -MF $(@:.o=.dep)
++	$(CC) $(CFLAGS) -Wall -Werror -Wno-error=maybe-uninitialized -Wno-error=use-after-free -c $< -o $@ -MD -MF $(@:.o=.dep)

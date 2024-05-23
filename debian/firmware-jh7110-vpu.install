@@ -1,0 +1,3 @@
+wave420l/firmware/monet.bin usr/lib/firmware/
+wave511/firmware/chagall.bin usr/lib/firmware/
+wave420l/code/cfg/encoder_defconfig.cfg usr/lib/firmware/

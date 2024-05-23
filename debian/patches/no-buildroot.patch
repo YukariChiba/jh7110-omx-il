@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index 150c4d5..4f8ae9d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,10 +9,6 @@ BUILD_CONFIGURATION := EmbeddedRiscvLinux
+ 
+ PRODUCT := OMX_IL
+ 
+-ifeq ("$(BUILD_CONFIGURATION)", "EmbeddedRiscvLinux")
+-    CROSS_CC_PREFIX = riscv64-buildroot-linux-gnu-
+-    PLATFORM        = riscvlinux
+-endif
+ CC  = $(CROSS_CC_PREFIX)gcc
+ CXX = $(CROSS_CC_PREFIX)g++
+ LINKER=$(CC)
+

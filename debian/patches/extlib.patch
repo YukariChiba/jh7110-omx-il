@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 150c4d5..05bcf24 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@ LINKER=$(CC)
+ AR  = $(CROSS_CC_PREFIX)ar
+ 
+ DEFINES = -DUSE_FEEDING_METHOD_BUFFER
+-INCLUDES = -I./include/khronos -I./core -I./component/video/wave5/common -I./component/video/wave4 -I./component/helper
++INCLUDES = -I./include/khronos -I./core -I./component/video/wave5/common -I./component/video/wave4 -I./component/helper -I./extlib -I./extlib/wave420l -I./extlib/wave420l/vpuapi -I./extlib/wave420l/sample/helper
+ $(warning "the value of LOCAL_PATH is$(STAGING_DIR)")
+ INCLUDES += -I$(STAGING_DIR)/usr/include/
+ INCLUDES += -I$(STAGING_DIR)/usr/include/wave420l/
+

@@ -1,0 +1,24 @@
+Source: jh7110-omx-il
+Section: misc
+Priority: optional
+Maintainer: Yukari Chiba <i@0x7f.cc>
+Standards-Version: 4.1.4
+Build-Depends:
+ debhelper-compat (= 12)
+Rules-Requires-Root: no
+
+Package: jh7110-omx-il
+Section: libs
+Architecture: linux-any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Description: JH7110 OpenMAX IL API library
+
+Package: firmware-jh7110-vpu
+Section: misc
+Architecture: all
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Description: JH7110 VPU firmware
